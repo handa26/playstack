@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -128,5 +129,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .root-container {
+    @apply bg-secondary min-h-screen flex justify-center;
+  }
+
+  .content-container {
+    @apply max-w-[1140px] flex min-h-screen flex-1 flex-col text-slate-100 font-poppins px-5 sm:px-10 md:px-16;
   }
 }
