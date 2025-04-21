@@ -154,4 +154,8 @@
   .search-btn {
     @apply mr-2 rounded-full flex justify-center items-center;
   }
+
+  .game-list {
+    @apply mt-10 flex flex-wrap gap-5 max-sm:justify-between sm:gap-10;
+  }
 }

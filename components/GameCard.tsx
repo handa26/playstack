@@ -1,0 +1,27 @@
+import Link from "next/link";
+import Image from "next/image";
+
+interface GameCardProps {
+  name: string;
+  background_image?: string;
+}
+
+const GameCard = ({ name, background_image }: GameCardProps) => {
+  return (
+    <Link href="/" className="w-[170px] h-[230px] relative group">
+      <Image
+        src={background_image || "/images/eldenring-cover.jpg"}
+        alt={`${name} cover`}
+        width={0}
+        height={0}
+        className="rounded-lg shadow-lg transition-transform duration-200 group-hover:brightness-50 w-[170px] h-[230px] object-cover"
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+      <p className="absolute font-poppins font-semibold top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+        {name || "Elden Ring"}
+      </p>
+    </Link>
+  );
+};
+
+export default GameCard;

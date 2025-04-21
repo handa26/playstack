@@ -1,9 +1,16 @@
-const Home = () => {
+import GameList from "@/components/GameList";
+
+import { fetchGames } from "@/lib/actions/game";
+
+const Home = async () => {
+  const data = await fetchGames({
+    dates: '2019-09-01,2019-09-30',
+    platforms: '18,1,7',
+  });
+
   return (
     <>
-      <h1 className="">Lato</h1>
-      <h1 className="">Inter</h1>
-      <h1 className="">Poppins</h1>
+      <GameList games={data.results} />
     </>
   );
 };
