@@ -134,7 +134,7 @@
 
 @layer utilities {
   .root-container {
-    @apply bg-secondary min-h-screen flex justify-center;
+    @apply bg-[#101218] min-h-screen flex justify-center;
   }
 
   .content-container {
