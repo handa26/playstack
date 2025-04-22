@@ -6,11 +6,13 @@ interface GameListProps {
     name: string;
     background_image?: string;
   }[];
+  title: string;
 }
 
-const GameList = ({ games }: GameListProps) => {
+const GameList = ({ games, title }: GameListProps) => {
   return (
     <section className="mt-10 mb-10">
+      <h2 className="text-2xl mb-4 font-poppins font-semibold">{title}</h2>
       <div className="game-list">
         {games.map((game) => (
           <GameCard key={game.id} {...game} />

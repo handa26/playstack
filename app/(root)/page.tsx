@@ -4,13 +4,13 @@ import { fetchGames } from "@/lib/actions/game";
 
 const Home = async () => {
   const data = await fetchGames({
-    dates: '2019-09-01,2019-09-30',
-    platforms: '18,1,7',
+    dates: "2025-01-01,2025-04-21",
+    ordering: "-rating",
   });
 
   return (
     <>
-      <GameList games={data.results} />
+      <GameList games={data.results} title="Top Rated Games" />
     </>
   );
 };
