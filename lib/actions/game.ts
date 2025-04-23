@@ -5,6 +5,8 @@ interface GameQueryParams {
   search?: string;
   page?: string;
   page_size?: string;
+  search_precise?: string;
+  search_exact?: string;
 }
 
 export const fetchGames = async (params: GameQueryParams = {}) => {
@@ -17,6 +19,8 @@ export const fetchGames = async (params: GameQueryParams = {}) => {
     if (params.search) queryParams.append("search", params.search);
     if (params.page) queryParams.append("page", params.page);
     if (params.page_size) queryParams.append("page_size", params.page_size);
+    if (params.search_precise) queryParams.append("search_precise", params.search_precise);
+    if (params.search_exact) queryParams.append("search_exact", params.search_exact);
 
     const apiUrl = `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&${queryParams.toString()}`;
 
