@@ -144,7 +144,7 @@
 
 @layer components {
   .search {
-    @apply relative w-[50%] flex items-center rounded-sm px-2 bg-[#30394c];
+    @apply relative w-[50%] flex items-center rounded-sm px-2 bg-[#30394c] h-[30px];
   }
 
   .search-input {

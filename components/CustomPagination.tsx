@@ -22,6 +22,8 @@ const CustomPagination = () => {
   const pageNumber = parseInt(pageParam, 10);
   const [page, setPage] = useState(pageNumber || 1);
 
+  const query = params.get("query");
+
   return (
     <>
       <Pagination className="my-4">
@@ -32,7 +34,12 @@ const CustomPagination = () => {
               onClick={() => {
                 if (page === 1) return;
                 setPage(page - 1);
-                router.push(`${pathname}?page=${page - 1}`);
+
+                if (query) {
+                  router.push(`${pathname}?query=${query}&page=${page - 1}`);
+                } else {
+                  router.push(`${pathname}?page=${page - 1}`);
+                }
               }}
             />
           </PaginationItem>
@@ -47,7 +54,12 @@ const CustomPagination = () => {
               className="cursor-pointer"
               onClick={() => {
                 setPage(page + 1);
-                router.push(`${pathname}?page=${page + 1}`);
+
+                if (query) {
+                  router.push(`${pathname}?query=${query}&page=${page + 1}`);
+                } else {
+                  router.push(`${pathname}?page=${page + 1}`);
+                }
               }}
             />
           </PaginationItem>
