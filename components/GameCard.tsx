@@ -2,13 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface GameCardProps {
+  id: number;
+  slug?: string;
   name: string;
   background_image?: string;
 }
 
-const GameCard = ({ name, background_image }: GameCardProps) => {
+const GameCard = ({ name, background_image, slug }: GameCardProps) => {
   return (
-    <Link href="/" className="w-[170px] h-[230px] relative group">
+    <Link href={`/games/${slug}`} className="w-[170px] h-[230px] relative group">
       <Image
         src={background_image || "/images/eldenring-cover.jpg"}
         alt={`${name} cover`}

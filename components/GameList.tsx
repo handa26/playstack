@@ -3,6 +3,7 @@ import GameCard from "./GameCard";
 interface GameListProps {
   games: {
     id: number;
+    slug?: string;
     name: string;
     background_image?: string;
   }[];
