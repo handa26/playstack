@@ -1,5 +1,4 @@
 "use client";
-import { Gamepad2, Play, LibraryBig, Gift } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -15,6 +14,7 @@ import {
 
 import { formattedDate } from "@/lib/utils";
 import { addGameToCategory, initializeStorage } from "@/lib/storage";
+import { gamesCategory } from "@/constants";
 
 interface GameDetailsProps {
   gameDetails: {
@@ -108,30 +108,14 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
 
           {/* CTA */}
           <div className="flex gap-4 justify-center items-center my-2.5 p-2 bg-[#1f2128] w-1/2 mx-auto rounded-lg">
-            <div className="group cursor-pointer">
-              <Gamepad2 size={30} className="cursor-pointer mx-auto" />
-              <p className="text-slate-500 group-hover:text-slate-200">
-                Played
-              </p>
-            </div>
-            <div className="group cursor-pointer">
-              <Play size={30} className="cursor-pointer mx-auto" />
-              <p className="text-slate-500 group-hover:text-slate-200">
-                Playing
-              </p>
-            </div>
-            <div className="group cursor-pointer">
-              <LibraryBig size={30} className="cursor-pointer mx-auto" />
-              <p className="text-slate-500 group-hover:text-slate-200">
-                Backlog
-              </p>
-            </div>
-            <div className="group cursor-pointer">
-              <Gift size={30} className="cursor-pointer mx-auto" />
-              <p className="text-slate-500 group-hover:text-slate-200">
-                Wishlist
-              </p>
-            </div>
+            {gamesCategory.map(({ title, icon: Icon }) => (
+              <div className="group cursor-pointer" key={title}>
+                <Icon size={30} className="cursor-pointer mx-auto" />
+                <p className="text-slate-500 capitalize group-hover:text-slate-200">
+                  {title}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Description */}
@@ -156,7 +140,9 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
                       className="text-slate-50 cursor-pointer hover:text-slate-500"
                     >
                       {x.platform.name}
-                      {index < gameDetails.platforms.length - 1 && <span>, </span>}
+                      {index < gameDetails.platforms.length - 1 && (
+                        <span>, </span>
+                      )}
                     </span>
                   </>
                 ))}

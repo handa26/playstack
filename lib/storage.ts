@@ -5,7 +5,7 @@ export function initializeStorage() {
     backlog: [],
     playing: [],
     wishlist: [],
-    completed: [],
+    played: [],
     stopped_playing: [],
   };
 

@@ -1,3 +1,5 @@
+import { Gamepad2, Play, LibraryBig, Gift } from "lucide-react";
+
 export const FIELD_NAMES = {
   username: "Username",
   email: "Email",
@@ -10,4 +12,21 @@ export const FIELD_TYPES = {
   password: "password",
 };
 
-export const gamesCategory = ["backlog", "playing", "wishlist", "completed"];
+export const gamesCategory = [
+  {
+    title: "backlog",
+    icon: LibraryBig,
+  },
+  {
+    title: "playing",
+    icon: Play,
+  },
+  {
+    title: "wishlist",
+    icon: Gift,
+  },
+  {
+    title: "played",
+    icon: Gamepad2,
+  },
+];
