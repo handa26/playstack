@@ -1,6 +1,7 @@
 "use client";
 import { Gamepad2, Play, LibraryBig, Gift } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 import CustomImageGallery from "@/components/CustomImageGallery";
 import {
@@ -13,9 +14,11 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import { formattedDate } from "@/lib/utils";
+import { addGameToCategory, initializeStorage } from "@/lib/storage";
 
 interface GameDetailsProps {
   gameDetails: {
+    id: number;
     name: string;
     background_image: string;
     background_image_additional: string;
@@ -43,6 +46,17 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
       thumbnail: gameDetails.background_image_additional,
     },
   ];
+
+  // Initialize localStorage on the client side
+  useEffect(() => {
+    initializeStorage();
+  }, []);
+
+  const handleAddToCategory = (category: keyof GameStorage) => {
+    addGameToCategory(String(gameDetails.id), category);
+
+    console.log(`Added ${gameDetails.id} to ${category}`);
+  };
 
   return (
     <>
