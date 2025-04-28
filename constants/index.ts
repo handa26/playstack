@@ -9,3 +9,5 @@ export const FIELD_TYPES = {
   email: "email",
   password: "password",
 };
+
+export const gamesCategory = ["backlog", "playing", "wishlist", "completed"];
