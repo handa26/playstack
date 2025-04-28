@@ -1,11 +1,3 @@
-interface GameStorage {
-  backlog: string[];
-  playing: string[];
-  wishlist: string[];
-  completed: string[];
-  stopped_playing: string[];
-}
-
 // Initialize localStorage with default structure if it doesn't exist
 export function initializeStorage() {
   const storageKey = "playstack_games";
