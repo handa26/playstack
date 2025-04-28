@@ -109,7 +109,11 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
           {/* CTA */}
           <div className="flex gap-4 justify-center items-center my-2.5 p-2 bg-[#1f2128] w-1/2 mx-auto rounded-lg">
             {gamesCategory.map(({ title, icon: Icon }) => (
-              <div className="group cursor-pointer" key={title}>
+              <div
+                className="group cursor-pointer"
+                key={title}
+                onClick={() => handleAddToCategory(title as keyof GameStorage)}
+              >
                 <Icon size={30} className="cursor-pointer mx-auto" />
                 <p className="text-slate-500 capitalize group-hover:text-slate-200">
                   {title}

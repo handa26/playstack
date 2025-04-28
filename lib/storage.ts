@@ -6,7 +6,6 @@ export function initializeStorage() {
     playing: [],
     wishlist: [],
     played: [],
-    stopped_playing: [],
   };
 
   if (!localStorage.getItem(storageKey)) {
@@ -18,7 +17,14 @@ export function initializeStorage() {
 export const getGamesFromStorage = (): GameStorage => {
   const storageKey = "playstack_games";
   const data = localStorage.getItem(storageKey);
-  return data ? JSON.parse(data) : initializeStorage(), getGamesFromStorage();
+  return data
+    ? JSON.parse(data)
+    : {
+        backlog: [],
+        playing: [],
+        wishlist: [],
+        played: [],
+      };
 };
 
 // Update localStorage with new data

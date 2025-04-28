@@ -3,5 +3,4 @@ interface GameStorage {
   playing: string[];
   wishlist: string[];
   played: string[];
-  stopped_playing: string[];
 }
