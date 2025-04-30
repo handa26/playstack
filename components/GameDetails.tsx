@@ -138,17 +138,15 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
               <h4 className="text-[14px] text-slate-500">Platforms</h4>
               <div className="flex gap-2 mt-2.5">
                 {gameDetails.platforms.map((x, index) => (
-                  <>
-                    <span
-                      key={index}
-                      className="text-slate-50 cursor-pointer hover:text-slate-500"
-                    >
-                      {x.platform.name}
-                      {index < gameDetails.platforms.length - 1 && (
-                        <span>, </span>
-                      )}
-                    </span>
-                  </>
+                  <span
+                    key={index}
+                    className="text-slate-50 cursor-pointer hover:text-slate-500"
+                  >
+                    {x.platform.name}
+                    {index < gameDetails.platforms.length - 1 && (
+                      <span>, </span>
+                    )}
+                  </span>
                 ))}
               </div>
             </div>
@@ -156,15 +154,13 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
               <h4 className="text-[14px] text-slate-500">Genres</h4>
               <div className="flex gap-2 mt-2.5">
                 {gameDetails.genres.map((x, index) => (
-                  <>
-                    <span
-                      key={index}
-                      className="text-slate-50 cursor-pointer hover:text-slate-500"
-                    >
-                      {x.name}
-                      {index < gameDetails.genres.length - 1 && <span>, </span>}
-                    </span>
-                  </>
+                  <span
+                    key={index}
+                    className="text-slate-50 cursor-pointer hover:text-slate-500"
+                  >
+                    {x.name}
+                    {index < gameDetails.genres.length - 1 && <span>, </span>}
+                  </span>
                 ))}
               </div>
             </div>
