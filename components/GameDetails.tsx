@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import CustomImageGallery from "@/components/CustomImageGallery";
 import {
@@ -12,8 +13,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { formattedDate } from "@/lib/utils";
-import { addGameToCategory, initializeStorage } from "@/lib/storage";
+import { formattedDate, cn } from "@/lib/utils";
+import {
+  addGameToCategory,
+  initializeStorage,
+  getGamesFromStorage,
+} from "@/lib/storage";
 import { gamesCategory } from "@/constants";
 
 interface GameDetailsProps {
@@ -36,6 +41,8 @@ interface GameDetailsProps {
 }
 
 const GameDetails = ({ gameDetails }: GameDetailsProps) => {
+  const router = useRouter();
+
   const images = [
     {
       original: gameDetails.background_image,
@@ -55,8 +62,11 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
   const handleAddToCategory = (category: keyof GameStorage) => {
     addGameToCategory(String(gameDetails.id), category);
 
+    router.refresh();
     console.log(`Added ${gameDetails.id} to ${category}`);
   };
+
+  const gamesStorage = getGamesFromStorage();
 
   return (
     <>
@@ -115,7 +125,14 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
                 onClick={() => handleAddToCategory(title as keyof GameStorage)}
               >
                 <Icon size={30} className="cursor-pointer mx-auto" />
-                <p className="text-slate-500 capitalize group-hover:text-slate-200">
+                <p
+                  className={cn(
+                    "text-slate-500 capitalize group-hover:text-slate-200",
+                    gamesStorage[title as keyof GameStorage]?.includes(
+                      String(gameDetails.id)
+                    ) && "text-slate-200"
+                  )}
+                >
                   {title}
                 </p>
               </div>
