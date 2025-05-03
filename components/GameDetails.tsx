@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import CustomImageGallery from "@/components/CustomImageGallery";
@@ -16,7 +15,6 @@ import {
 import { formattedDate, cn } from "@/lib/utils";
 import {
   addGameToCategory,
-  initializeStorage,
   getGamesFromStorage,
 } from "@/lib/storage";
 import { gamesCategory } from "@/constants";
@@ -53,11 +51,6 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
       thumbnail: gameDetails.background_image_additional,
     },
   ];
-
-  // Initialize localStorage on the client side
-  useEffect(() => {
-    initializeStorage();
-  }, []);
 
   const handleAddToCategory = (category: keyof GameStorage) => {
     addGameToCategory(String(gameDetails.id), category);
