@@ -35,14 +35,18 @@ export const updateGamesInStorage = (updatedData: GameStorage) => {
 
 // Add a game ID to a specific category
 export const addGameToCategory = (
-  gameId: string,
+  gameDetail: {
+    id: string;
+    name: string;
+    background_image: string;
+  },
   category: keyof GameStorage
 ) => {
   const currentData = getGamesFromStorage();
 
   // Add gameId to the specified category if it doesn't already exist
-  if (!currentData[category].includes(gameId)) {
-    currentData[category].push(gameId);
+  if (!currentData[category].includes(gameDetail.id)) {
+    currentData[category].push(gameDetail);
     updateGamesInStorage(currentData);
   }
 };

@@ -13,10 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 
 import { formattedDate, cn } from "@/lib/utils";
-import {
-  addGameToCategory,
-  getGamesFromStorage,
-} from "@/lib/storage";
+import { addGameToCategory, getGamesFromStorage } from "@/lib/storage";
 import { gamesCategory } from "@/constants";
 
 interface GameDetailsProps {
@@ -53,7 +50,13 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
   ];
 
   const handleAddToCategory = (category: keyof GameStorage) => {
-    addGameToCategory(String(gameDetails.id), category);
+    const gameObj = {
+      id: gameDetails.id.toString(),
+      name: gameDetails.name,
+      background_image: gameDetails.background_image,
+    };
+
+    addGameToCategory(gameObj, category);
 
     router.refresh();
     console.log(`Added ${gameDetails.id} to ${category}`);
@@ -121,8 +124,8 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
                 <p
                   className={cn(
                     "text-slate-500 capitalize group-hover:text-slate-200",
-                    gamesStorage[title as keyof GameStorage]?.includes(
-                      String(gameDetails.id)
+                    gamesStorage[title as keyof GameStorage]?.some(
+                      (game) => String(game.id) === String(gameDetails.id)
                     ) && "text-slate-200"
                   )}
                 >
