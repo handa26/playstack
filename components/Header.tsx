@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Gamepad2 } from "lucide-react";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 import SearchForm from "./SearchForm";
 
@@ -32,9 +33,15 @@ const Header = () => {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-[16px]">Handa</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-transparent text-[16px]">
+                Handa
+              </NavigationMenuTrigger>
               <NavigationMenuContent className="px-[15px]">
-                <NavigationMenuLink>Profile</NavigationMenuLink>
+                <Link href="/profile" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Profile
+                  </NavigationMenuLink>
+                </Link>
                 <NavigationMenuLink>Played</NavigationMenuLink>
                 <NavigationMenuLink>Playing</NavigationMenuLink>
                 <NavigationMenuLink>Backlog</NavigationMenuLink>
