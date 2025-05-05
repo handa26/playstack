@@ -37,7 +37,7 @@ const Header = () => {
                 Handa
               </NavigationMenuTrigger>
               <NavigationMenuContent className="px-[15px]">
-                <Link href="/profile" legacyBehavior passHref>
+                <Link href="/profile" passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Profile
                   </NavigationMenuLink>
