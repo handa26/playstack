@@ -37,15 +37,43 @@ const Header = () => {
                 Handa
               </NavigationMenuTrigger>
               <NavigationMenuContent className="px-[15px]">
-                <Link href="/profile" passHref>
+                <Link href="/profile" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Profile
                   </NavigationMenuLink>
                 </Link>
-                <NavigationMenuLink>Played</NavigationMenuLink>
-                <NavigationMenuLink>Playing</NavigationMenuLink>
-                <NavigationMenuLink>Backlog</NavigationMenuLink>
-                <NavigationMenuLink>Wishlist</NavigationMenuLink>
+                <Link href="/profile/games" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Played
+                  </NavigationMenuLink>
+                </Link>
+                <Link
+                  href="/profile/games?status=playing"
+                  legacyBehavior
+                  passHref
+                >
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Playing
+                  </NavigationMenuLink>
+                </Link>
+                <Link
+                  href="/profile/games?status=backlog"
+                  legacyBehavior
+                  passHref
+                >
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Backlog
+                  </NavigationMenuLink>
+                </Link>
+                <Link
+                  href="/profile/games?status=wishlist"
+                  legacyBehavior
+                  passHref
+                >
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Wishlist
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
