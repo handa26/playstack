@@ -30,3 +30,14 @@ export const gamesCategory = [
     icon: Gamepad2,
   },
 ];
+
+export const headerNavItems = [
+  {
+    title: "Profile",
+    href: "/profile",
+  },
+  {
+    title: "Games",
+    href: "/profile/games",
+  },
+];

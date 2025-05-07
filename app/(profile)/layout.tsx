@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Profile from "@/components/Profile";
 import Footer from "@/components/Footer";
+import HeaderNav from "@/components/HeaderNav";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -11,6 +12,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className="content-container">
           <Header />
           <Profile />
+          <HeaderNav />
           {children}
         </div>
       </main>
