@@ -10,6 +10,7 @@ const Home = async () => {
   const data = await fetchGames({
     dates: `${formatDate(lastWeekDate)},${formatDate(currentDate)}`,
     ordering: "-added",
+    page_size: "10",
   });
 
   return (
