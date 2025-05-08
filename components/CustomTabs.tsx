@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import GameList from "./GameList";
+
+import { getGamesFromStorage } from "@/lib/storage";
 
 const CustomTabs = () => {
   const params = useSearchParams();
@@ -21,12 +24,14 @@ const CustomTabs = () => {
     router.push(`/profile/games?status=${newValue}`, { scroll: false });
   };
 
+  const gamesStorage = getGamesFromStorage();
+
   return (
     <>
       <Tabs
         value={activeTab}
         onValueChange={handleTabChange}
-        className="max-w-xs w-full"
+        className="w-full"
       >
         <TabsList className="p-0 h-auto bg-background gap-1">
           <TabsTrigger
@@ -54,10 +59,18 @@ const CustomTabs = () => {
             Wishlist
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="played">Played Games</TabsContent>
-        <TabsContent value="playing">Playing Games</TabsContent>
-        <TabsContent value="backlog">Backlog Games</TabsContent>
-        <TabsContent value="wishlist">Wishlist Games</TabsContent>
+        <TabsContent value="played">
+          <GameList games={gamesStorage.played} />
+        </TabsContent>
+        <TabsContent value="playing">
+          <GameList games={gamesStorage.playing} />
+        </TabsContent>
+        <TabsContent value="backlog" className="">
+          <GameList games={gamesStorage.backlog} />
+        </TabsContent>
+        <TabsContent value="wishlist">
+          <GameList games={gamesStorage.wishlist} />
+        </TabsContent>
       </Tabs>
     </>
   );
