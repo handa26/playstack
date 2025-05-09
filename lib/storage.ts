@@ -39,6 +39,7 @@ export const addGameToCategory = (
     id: string;
     name: string;
     background_image: string;
+    slug?: string;
   },
   category: keyof GameStorage
 ) => {

@@ -32,6 +32,7 @@ interface GameDetailsProps {
     genres: {
       name: string;
     }[];
+    slug?: string;
   };
 }
 
@@ -54,6 +55,7 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
       id: gameDetails.id.toString(),
       name: gameDetails.name,
       background_image: gameDetails.background_image,
+      slug: gameDetails.slug,
     };
 
     addGameToCategory(gameObj, category);
