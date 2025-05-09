@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Lato, Inter, Poppins } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+
 import "./globals.css";
 
 const lato = Lato({
@@ -35,6 +37,7 @@ export default function RootLayout({
         className={`${lato.variable} ${inter.variable} ${poppins.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

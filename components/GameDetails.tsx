@@ -15,6 +15,7 @@ import {
 import { formattedDate, cn } from "@/lib/utils";
 import { addGameToCategory, getGamesFromStorage } from "@/lib/storage";
 import { gamesCategory } from "@/constants";
+import { toast } from "sonner";
 
 interface GameDetailsProps {
   gameDetails: {
@@ -60,8 +61,8 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
 
     addGameToCategory(gameObj, category);
 
+    toast.success(`Added ${gameDetails.name} to ${category}`);
     router.refresh();
-    console.log(`Added ${gameDetails.id} to ${category}`);
   };
 
   const gamesStorage = getGamesFromStorage();
