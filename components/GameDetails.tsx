@@ -61,7 +61,18 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
 
     addGameToCategory(gameObj, category);
 
-    toast.success(`Added ${gameDetails.name} to ${category}`);
+    console.log(
+      gamesStorage[category].map((game) => game.id === gameObj.id)[0]
+    );
+
+    if (
+      gamesStorage[category].map((game) => game.id === gameObj.id)[0] === true
+    ) {
+      toast.success(`Removed ${gameDetails.name} from ${category}`);
+    } else {
+      toast.success(`Added ${gameDetails.name} to ${category}`);
+    }
+
     router.refresh();
   };
 
