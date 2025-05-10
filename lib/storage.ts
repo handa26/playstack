@@ -44,10 +44,26 @@ export const addGameToCategory = (
   category: keyof GameStorage
 ) => {
   const currentData = getGamesFromStorage();
+ 
+  // Remove the game from all other categories
+  Object.keys(currentData).forEach((cat) => {
+    if (cat !== category) {
+      currentData[cat as keyof GameStorage] = currentData[cat as keyof GameStorage].filter(
+        (game) => game.id !== gameDetail.id
+      );
+    }
+  });
 
-  // Add gameId to the specified category if it doesn't already exist
-  if (!currentData[category].includes(gameDetail.id)) {
+  // Add or remove from the target category
+  const index = currentData[category].findIndex((game) => game.id === gameDetail.id);
+  if (index === -1) {
+    // Game not in category, add it
     currentData[category].push(gameDetail);
-    updateGamesInStorage(currentData);
+  } else {
+    // Game already in category, remove it
+    currentData[category].splice(index, 1);
   }
+
+  // Update localStorage
+  updateGamesInStorage(currentData);
 };
