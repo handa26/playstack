@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -59,18 +59,20 @@ const CustomTabs = () => {
             Wishlist
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="played">
-          <GameList games={gamesStorage.played} />
-        </TabsContent>
-        <TabsContent value="playing">
-          <GameList games={gamesStorage.playing} />
-        </TabsContent>
-        <TabsContent value="backlog" className="">
-          <GameList games={gamesStorage.backlog} />
-        </TabsContent>
-        <TabsContent value="wishlist">
-          <GameList games={gamesStorage.wishlist} />
-        </TabsContent>
+        <Suspense fallback={<div>Loading...</div>}>
+          <TabsContent value="played">
+            <GameList games={gamesStorage.played} />
+          </TabsContent>
+          <TabsContent value="playing">
+            <GameList games={gamesStorage.playing} />
+          </TabsContent>
+          <TabsContent value="backlog" className="">
+            <GameList games={gamesStorage.backlog} />
+          </TabsContent>
+          <TabsContent value="wishlist">
+            <GameList games={gamesStorage.wishlist} />
+          </TabsContent>
+        </Suspense>
       </Tabs>
     </>
   );
