@@ -28,38 +28,38 @@ const CustomTabs = () => {
 
   return (
     <>
-      <Tabs
-        value={activeTab}
-        onValueChange={handleTabChange}
-        className="w-full"
-      >
-        <TabsList className="p-0 h-auto bg-background gap-1">
-          <TabsTrigger
-            className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
-            value="played"
-          >
-            Played
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
-            value="playing"
-          >
-            Playing
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
-            value="backlog"
-          >
-            Backlog
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
-            value="wishlist"
-          >
-            Wishlist
-          </TabsTrigger>
-        </TabsList>
-        <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Tabs
+          value={activeTab}
+          onValueChange={handleTabChange}
+          className="w-full"
+        >
+          <TabsList className="p-0 h-auto bg-background gap-1">
+            <TabsTrigger
+              className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
+              value="played"
+            >
+              Played
+            </TabsTrigger>
+            <TabsTrigger
+              className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
+              value="playing"
+            >
+              Playing
+            </TabsTrigger>
+            <TabsTrigger
+              className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
+              value="backlog"
+            >
+              Backlog
+            </TabsTrigger>
+            <TabsTrigger
+              className="data-[state=active]:bg-slate-600 data-[state=active]:text-primary-foreground text-slate-500 cursor-pointer"
+              value="wishlist"
+            >
+              Wishlist
+            </TabsTrigger>
+          </TabsList>
           <TabsContent value="played">
             <GameList games={gamesStorage.played} />
           </TabsContent>
@@ -72,8 +72,8 @@ const CustomTabs = () => {
           <TabsContent value="wishlist">
             <GameList games={gamesStorage.wishlist} />
           </TabsContent>
-        </Suspense>
-      </Tabs>
+        </Tabs>
+      </Suspense>
     </>
   );
 };
