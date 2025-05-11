@@ -4,7 +4,7 @@ import {
   DefaultValues,
   FieldValues,
   Path,
-  SubmitHandler,
+  // SubmitHandler,
   useForm,
   UseFormReturn,
 } from "react-hook-form";
@@ -33,7 +33,7 @@ interface Props<T extends FieldValues> {
 const AuthForm = <T extends FieldValues>({
   schema,
   defaultValues,
-  onSubmit,
+  // onSubmit,
   type,
 }: Props<T>) => {
   const isSignIn = type === "SIGN_IN";
