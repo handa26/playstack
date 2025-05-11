@@ -18,3 +18,7 @@ export const formattedDate = (date: string) => {
 
   return new Date(date).toLocaleDateString("en-US", options);
 };
+
+export const threeDigitsNum = (num: number) => {
+  return ("00" + num).slice(-3)
+};
