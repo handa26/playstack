@@ -6,8 +6,8 @@
 
 ## Features
 
-- **Game Tracking**: Add games to five categories: Backlog, Playing, Wishlist, Completed, and Stopped Playing (in progress).
-- **Guest Mode with Local Storage**: Use the app without signing up, storing data in the browser’s localStorage (in progress). 
+- **Game Tracking**: Add games to five categories: Backlog, Playing, Wishlist, Completed, and Stopped Playing.
+- **Guest Mode with Local Storage**: Use the app without signing up, storing data in the browser’s localStorage. 
 - **Optional Authentication**: Sign up or sign in to save your data to a PostgreSQL database (planned feature).
 - **Game Discovery**: Browse trending games and view detailed game information using the RAWG API.
 - **Responsive Design**: A modern, gaming-inspired UI built with Tailwind CSS and Shadcn components, featuring dark mode support.
@@ -31,6 +31,18 @@
 <div style="margin-top: 12px; margin-bottom: 12px">
   <a href="">
     <img src="./public/preview/PlayStack-detail.png" alt="homepage" style="width: 100%; border: 2px solid blue; border-radius: 10px;">
+  </a>
+</div>
+
+<div style="margin-top: 12px; margin-bottom: 12px">
+  <a href="">
+    <img src="./public/preview/PlayStack-profile1.png" alt="homepage" style="width: 100%; border: 2px solid blue; border-radius: 10px;">
+  </a>
+</div>
+
+<div style="margin-top: 12px; margin-bottom: 12px">
+  <a href="">
+    <img src="./public/preview/PlayStack-profile2.png" alt="homepage" style="width: 100%; border: 2px solid blue; border-radius: 10px;">
   </a>
 </div>
 
