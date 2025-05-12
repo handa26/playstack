@@ -10,6 +10,12 @@ import { getGamesFromStorage } from "@/lib/storage";
 const CustomTabs = () => {
   const params = useSearchParams();
   const router = useRouter();
+  const [gamesStorage, setGamesStorage] = useState<GameStorage>([]);
+
+  useEffect(() => {
+    const localStorageGames = getGamesFromStorage();
+    setGamesStorage(localStorageGames);
+  }, []);
 
   const status = params.get("status") || "played";
 
@@ -24,7 +30,7 @@ const CustomTabs = () => {
     router.push(`/profile/games?status=${newValue}`, { scroll: false });
   };
 
-  const gamesStorage = getGamesFromStorage();
+  // const gamesStorage = getGamesFromStorage();
 
   return (
     <>
@@ -60,16 +66,16 @@ const CustomTabs = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="played">
-          <GameList games={gamesStorage.played} />
+          <GameList games={gamesStorage?.played} />
         </TabsContent>
         <TabsContent value="playing">
-          <GameList games={gamesStorage.playing} />
+          <GameList games={gamesStorage?.playing} />
         </TabsContent>
         <TabsContent value="backlog" className="">
-          <GameList games={gamesStorage.backlog} />
+          <GameList games={gamesStorage?.backlog} />
         </TabsContent>
         <TabsContent value="wishlist">
-          <GameList games={gamesStorage.wishlist} />
+          <GameList games={gamesStorage?.wishlist} />
         </TabsContent>
       </Tabs>
     </>
