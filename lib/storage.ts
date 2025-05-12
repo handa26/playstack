@@ -16,6 +16,9 @@ export function initializeStorage() {
 // Read data from localStorage
 export const getGamesFromStorage = (): GameStorage => {
   const storageKey = "playstack_games";
+  if (!localStorage.getItem(storageKey)) {
+    initializeStorage();
+  }
   const data = localStorage.getItem(storageKey);
   return data
     ? JSON.parse(data)
