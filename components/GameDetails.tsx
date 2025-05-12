@@ -67,7 +67,7 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
     addGameToCategory(gameObj, category);
 
     if (
-      gamesStorage[category].map((game) => game.id === gameObj.id)[0] === true
+      gamesStorage[category].some((game) => game.id === gameObj.id)
     ) {
       toast.success(`Removed ${gameDetails.name} from ${category}`);
     } else {
