@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 import CustomImageGallery from "@/components/CustomImageGallery";
 import {
@@ -38,7 +38,12 @@ interface GameDetailsProps {
 }
 
 const GameDetails = ({ gameDetails }: GameDetailsProps) => {
-  const router = useRouter();
+  const [gamesStorage, setGamesStorage] = useState<GameStorage>([]);
+
+  useEffect(() => {
+    const localStorageGames = getGamesFromStorage();
+    setGamesStorage(localStorageGames);
+  }, []);
 
   const images = [
     {
@@ -61,10 +66,6 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
 
     addGameToCategory(gameObj, category);
 
-    console.log(
-      gamesStorage[category].map((game) => game.id === gameObj.id)[0]
-    );
-
     if (
       gamesStorage[category].map((game) => game.id === gameObj.id)[0] === true
     ) {
@@ -73,10 +74,9 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
       toast.success(`Added ${gameDetails.name} to ${category}`);
     }
 
-    router.refresh();
+    const currentData = getGamesFromStorage();
+    setGamesStorage(currentData);
   };
-
-  const gamesStorage = getGamesFromStorage();
 
   return (
     <>
