@@ -15,7 +15,7 @@ const GameList = ({ games, title }: GameListProps) => {
     <section className="mt-10 mb-10">
       <h2 className="text-2xl mb-4 font-poppins font-semibold">{title}</h2>
       <div className="game-list">
-        {games.map((game) => (
+        {games?.map((game) => (
           <GameCard key={game.id} {...game} />
         ))}
       </div>
