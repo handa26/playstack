@@ -70,3 +70,21 @@ export const addGameToCategory = (
   // Update localStorage
   updateGamesInStorage(currentData);
 };
+
+export const signIn = async (username: string) => {
+  const storageKey = "playstack_user";
+
+  const defaultData = {
+    username: username,
+  };
+
+  if (!localStorage.getItem(storageKey)) {
+    localStorage.setItem(storageKey, JSON.stringify(defaultData));
+  }
+};
+
+export const getCurrentUser = () => {
+  const storageKey = "playstack_user";
+  const data = localStorage.getItem(storageKey);
+  return data ? JSON.parse(data) : null;
+};
