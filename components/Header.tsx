@@ -12,8 +12,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Separator } from "@/components/ui/separator";
 
-const Header = () => {
+const Header = ({ user }: { user: { username: string} }) => {
   return (
     <header className="my-10 flex items-center justify-between">
       <Link href="/" className="flex items-center gap-2 font-bold font-poppins">
@@ -34,7 +35,7 @@ const Header = () => {
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-[16px]">
-                Handa
+                {user?.username || "Guest"}
               </NavigationMenuTrigger>
               <NavigationMenuContent className="px-[15px]">
                 <Link href="/profile" legacyBehavior passHref>
@@ -42,6 +43,7 @@ const Header = () => {
                     Profile
                   </NavigationMenuLink>
                 </Link>
+                <Separator />
                 <Link href="/profile/games" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Played
