@@ -21,7 +21,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <main className="root-container">
         <div className="content-container">
           <Header user={user!} />
-          <Profile />
+          <Profile user={user!} />
           <HeaderNav />
           {children}
         </div>
