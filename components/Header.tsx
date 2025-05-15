@@ -14,24 +14,24 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
 
-const Header = ({ user }: { user: { username: string} }) => {
+const Header = ({ user }: { user: { username: string } }) => {
   return (
-    <header className="my-10 flex items-center justify-between">
+    <header className="my-2 flex items-center gap-2 justify-center md:my-10 md:justify-between">
       <Link href="/" className="flex items-center gap-2 font-bold font-poppins">
         <div className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
           <Gamepad2 className="size-6" />
         </div>
-        PlayStack
+        <span className="hidden md:block">PlayStack</span>
       </Link>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-center gap-2 md:gap-4">
         <SearchForm />
 
-        <Link href="/games" className="text-[16px]">
+        <Link href="/games" className="text-[16px] hidden md:block">
           Games
         </Link>
 
-        <NavigationMenu>
+        <NavigationMenu className="">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent text-[16px]">
@@ -41,6 +41,11 @@ const Header = ({ user }: { user: { username: string} }) => {
                 <Link href="/profile" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Profile
+                  </NavigationMenuLink>
+                </Link>
+                <Link href="/games" legacyBehavior passHref className="text-[16px] block md:hidden">
+                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} block md:hidden`}>
+                    Games
                   </NavigationMenuLink>
                 </Link>
                 <Separator />
