@@ -19,7 +19,7 @@ const Page = () => {
 
   return (
     <div className="my-2">
-      <div className="flex justify-center gap-20">
+      <div className="flex flex-col justify-center gap-[15px] md:gap-20 md:flex-row">
         <div className="text-center">
           <h2 className="text-8xl">{threeDigitsNum(totalGames) || 0}</h2>
           <p className="text-[16px]">Total Games</p>
