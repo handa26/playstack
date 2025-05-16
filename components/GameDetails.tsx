@@ -66,9 +66,7 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
 
     addGameToCategory(gameObj, category);
 
-    if (
-      gamesStorage[category].some((game) => game.id === gameObj.id)
-    ) {
+    if (gamesStorage[category].some((game) => game.id === gameObj.id)) {
       toast.success(`Removed ${gameDetails.name} from ${category}`);
     } else {
       toast.success(`Added ${gameDetails.name} to ${category}`);
@@ -111,13 +109,17 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
             </BreadcrumbList>
           </Breadcrumb>
 
-          <CustomImageGallery items={images} />
+          <div>
+            <CustomImageGallery items={images} />
+          </div>
         </div>
 
         {/* Right */}
         <div className="mt-2.5">
           <div className="flex flex-col gap-2 justify-center w-[70%] mx-auto mb-[20px]">
-            <h1 className="text-5xl font-bold">{gameDetails.name}</h1>
+            <h1 className="text-[18px] font-bold md:text-5xl">
+              {gameDetails.name}
+            </h1>
             <p>
               Released on{" "}
               <span className="bg-slate-200 text-slate-800 p-[5px] rounded-sm">
@@ -127,7 +129,7 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
           </div>
 
           {/* CTA */}
-          <div className="flex gap-4 justify-center items-center my-2.5 p-2 bg-[#1f2128] w-1/2 mx-auto rounded-lg">
+          <div className="flex gap-4 justify-center items-center my-2.5 p-2 bg-[#1f2128] w-[100%] mx-auto rounded-lg md:w-1/2">
             {gamesCategory.map(({ title, icon: Icon }) => (
               <div
                 className="group cursor-pointer"
@@ -160,10 +162,10 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
             </div>
           </div>
 
-          <div className="my-[20px] flex gap-[20px]">
+          <div className="my-[20px] flex flex-col gap-[20px] md:flex-row">
             <div>
               <h4 className="text-[14px] text-slate-500">Platforms</h4>
-              <div className="flex gap-2 mt-2.5">
+              <div className="flex flex-wrap gap-2 mt-2.5">
                 {gameDetails.platforms.map((x, index) => (
                   <span
                     key={index}
@@ -179,7 +181,7 @@ const GameDetails = ({ gameDetails }: GameDetailsProps) => {
             </div>
             <div>
               <h4 className="text-[14px] text-slate-500">Genres</h4>
-              <div className="flex gap-2 mt-2.5">
+              <div className="flex flex-wrap gap-2 mt-2.5">
                 {gameDetails.genres.map((x, index) => (
                   <span
                     key={index}
